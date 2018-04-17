@@ -16,6 +16,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //配置自定义打包名称
+    applicationVariants.all { variant ->
+
+        variant.outputs.all {
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                if (variant.buildType.name.equals('release')) {
+                    outputFileName = "biomass.apk"
+                } else if (variant.buildType.name.equals('debug')) {
+                    outputFileName = "biomass.apk"
+                }
+            }
+        }
+    }
 }
 
 dependencies {
